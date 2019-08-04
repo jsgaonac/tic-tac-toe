@@ -1,0 +1,21 @@
+{
+  "name": "tic-tac-toe",
+  "version": "1.0.0",
+  "main": "dist/game.bundle.js",
+  "repository": "git@github.com:jsgaonac/tic-tac-toe.git",
+  "author": "Juan S. Gaona C. <jsgaonac@protonmail.com>",
+  "license": "MIT",
+  "private": true,
+  "devDependencies": {
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "babel-loader": "^8.0.6",
+    "webpack": "^4.39.1",
+    "webpack-cli": "^3.3.6"
+  },
+  "scripts": {
+    "build": "webpack --mode=development",
+    "watch": "yarn build --watch",
+    "production": "webpack --mode=production"
+  }
+}
