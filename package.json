@@ -17,5 +17,8 @@
     "build": "webpack --mode=development",
     "watch": "yarn build --watch",
     "production": "webpack --mode=production"
+  },
+  "dependencies": {
+    "ramda": "^0.26.1"
   }
 }
