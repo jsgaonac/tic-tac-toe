@@ -59,50 +59,42 @@ function isGameOver(board) {
   return !board.includes(emptyPosition);
 }
 
-function playerMove(currentPlayer, board) {
-  let isValidMove = false;
-
-  while (!isValidMove) {
-    var playerMove = Number(prompt(`Move for player ${currentPlayer}: `));
-
-    if (isPositionEmpty(playerMove, board))
-      isValidMove = true;
-    else
-      alert(`Invalid move!`);
-  }
-
-  return playerMove;
+// Returns true on valid move.
+function playerMove(playerMove, board) {
+  return isPositionEmpty(playerMove, board);
 }
 
 function isPositionEmpty(playerMove, board) {
-  return playerMove >= 0 && playerMove <= 9 && board[playerMove] == emptyPosition;
+  return playerMove >= 0 && playerMove < 9 && board[playerMove] == emptyPosition;
 }
 
 function updateBoard(playerMove, currentPlayer, board) {
   return R.update(playerMove, currentPlayer, board);
 }
 
-var startGame = function() {
-  var board = getNewBoard();
-  var currentPlayer = playerOne;
-  var gameFinished = false;
+var board = getNewBoard();
+var currentPlayer = playerOne;
+var hasPlayerWon = false;
 
-  while (!gameFinished) {
-    var position = playerMove(currentPlayer, board);
+export default {
+  initGame() {
+    board = getNewBoard();
+    currentPlayer = playerOne;
+  },
 
-    board = updateBoard(position, currentPlayer, board);
+  playCurrentPlayer(move) {
+    if (playerMove(move, board)) {
+      board = updateBoard(move, currentPlayer, board);
+      playerWon = hasPlayerWon(currentPlayer, move, board);
+      currentPlayer = togglePlayer(currentPlayer);
 
-    var playerWon = hasPlayerWon(currentPlayer, position, board);
+      return true;
+    }
 
-    gameFinished = playerWon || isGameOver(board);
+    return false;
+  },
 
-    currentPlayer = togglePlayer(currentPlayer);
-  }
+  playerWon: () => playerWon,
 
-  if (hasPlayerWon)
-    alert(`Player ${togglePlayer(currentPlayer)} won!`);
-  else
-    alert('Game tied!')
+  hasGameEnded: () => playerWon || isGameOver(board)
 };
-
-startGame();
