@@ -74,7 +74,7 @@ function updateBoard(playerMove, currentPlayer, board) {
 
 var board = getNewBoard();
 var currentPlayer = playerOne;
-var hasPlayerWon = false;
+var playerWon = false;
 
 export default {
   initGame() {
@@ -93,6 +93,8 @@ export default {
 
     return false;
   },
+
+  getCurrentPlayer: () => currentPlayer,
 
   playerWon: () => playerWon,
 
