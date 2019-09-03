@@ -80,6 +80,7 @@ export default {
   initGame() {
     board = getNewBoard();
     currentPlayer = playerOne;
+    playerWon = false; 
   },
 
   playCurrentPlayer(move) {
