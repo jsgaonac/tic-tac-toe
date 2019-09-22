@@ -9,16 +9,15 @@
   "devDependencies": {
     "@babel/core": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
-    "babel-loader": "^8.0.6",
-    "webpack": "^4.39.1",
-    "webpack-cli": "^3.3.6"
+    "@babel/preset-react": "^7.0.0",
+    "parcel-bundler": "^1.12.3"
   },
   "scripts": {
-    "build": "webpack --mode=development",
-    "watch": "yarn build --watch",
-    "production": "webpack --mode=production"
+    "dev": "parcel index.html"
   },
   "dependencies": {
-    "ramda": "^0.26.1"
+    "ramda": "^0.26.1",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0"
   }
 }
